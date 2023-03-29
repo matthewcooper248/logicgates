@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>electrodynamics</title>
+	<link rel="icon" href="../favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="../style.css">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js">
+  </script>
+  <!-- the below three lines are a fix to get HTML5 semantic elements working in old versions of Internet Explorer-->
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+	<h1>logic gates</h1>
+	<p>from first principles</p>
+	<nav>
+		<a href="../index.html">
+			home
+		</a>
+		<a href="01-electrodynamics.html">
+			start
+		</a>
+		<a href="references.html">
+			references
+		</a>
+	</nav>
+	<main>
+		<aside>
+			<a href="01-electrodynamics.html"  class="highlighted">
+				electrodynamics
+			</a>
+			<a href="02-circuits.html">
+				circuits
+			</a>
+			<a href="03-solid-state-physics.html">
+				solid state physics
+			</a>
+			<a href="04-transistors.html">
+				transistors
+			</a>
+			<a href="05-logic-gates.html">
+				logic gates
+			</a>
+			<a href="references.html">
+				references
+			</a>
+		</aside>
+		<article>
+			<h2>
+				electrodynamics
+			</h2>
+			<p>
+				Computers don't necessarily need to be electrical devices.
+				Humans were using devices to aid them with their calculations long before 
+				Charles Coulomb measured the strength of the electric force between charges with his torsion balance
+				<a 
+					href="references.html#ref-01"
+					title="[1] R. A. Serway, R. J. Beichner, and J. W. Jewett, Physics For Scientists and Engineers (Saunders College Publishing, Fort Worth, 1999)."
+				>
+				[1]</a>.
+				The abacus was a mechanical calculating device used thousands of years before that which allowed for the representation and manipulation of large numbers in base ten.
+				Slide rules have been used since the seventeenth century to do operations like multiplication and division or calculate functions like logarithms or exponentials
+				<a
+					href="references.html#ref-02"
+					title="[2] D. De Solla Price, A History of Calculating Machines, IEEE Micro 4, 1 (1984). "
+				>
+				[2]</a>. 
+				But this discussion is about the science and technology behind logic gates which in there most important implementations are electrical devices.
+				Therefore, we will not discuss purely mechanical computation and instead will begin with some of the
+				fundamentals of electricity and magnetism that are at the lowest levels of abstraction that make
+				logic gates possible.
+			</p>
+			<p>
+				The Standard Model of particle physics includes many different particles that have an intrinsic electric charge.
+				However, only the negative electron and positive proton need to be considered to understand computing as of yet.
+				The magnitude of the charge of either of these particles is \(1.60\times10^{-19}\) Coulombs (C).
+			</p>
+			<p>
+				These charged protons and electrons are found within atoms. The positive protons are
+				bound within the nucleus and the negative electrons exist outside the nucleus. The electrons are more easily freed from
+				the confines of the atom. Thus the freed electrons can move about from one atom to another or through free space.
+				Normally an atom has an equal amount of protons and electrons so the total charge is zero and the atom is neutral.
+				Matter is composed of atoms and most matter will be neutral.
+				However, since the electrons can be removed from the atom you can have a sample of matter that is missing electrons
+				and has a net positive charge. You might have another sample that has extra electrons and has a net negative charge.
+				This is how we can have macroscopic charges greater than the \(1.60\times10^{-19}\) C.
+			</p>
+			<p>
+				We can have uneven distributions of charge since the electrons can move,
+				but we also need to pay special attention to those moving charges.
+				Moving charges produce a current.
+				The current, \(I\), running through a cross-sectional area can be described by 
+			</p>
+			<p>
+			\begin{equation}I=\frac{dq}{dt}\tag{1}\end{equation} 
+			</p>
+			<p>
+				where \(dq\) is the amount of charge passing the cross-section during a time interval, \(dt\). If there is a steady
+				flow of charge in time then that is a steady current. If you have a steady current you can forget about the charges
+				and now just deal in currents.
+			</p>
+			<p>
+				So now we have two phenomena. We have charges and we have currents. What you need to know first is that charges produce
+				electric fields and currents produce magnetic fields. The equations describing the production of these fields are
+				described by a form of Coulomb's law as well as the Biot-Savart law.
+				These equations require integral and vector calculus. However, we can get an intuition for how these sources
+				produces these fields by looking at the cases of a point charge or a current-carrying wire.
+				A point charge, \(q\), produces an electric field, E, according to
+			</p>
+			<p>
+			\begin{equation}E=\frac{1}{4\pi\epsilon_0}\frac{q}{r^2}\tag{2}\end{equation}
+			</p>
+			<p>
+				where \(r\) is the distance between the charge and the point where you are measuring the electric field
+				and \(\epsilon_0\) is the permittivity of free space which is \(8.85\times10^{-12}\) farads per meter (F/m).
+				The strength of the electric field is inversely proportional to the square of the distance from the charge.
+				So the field is strong close to the charge and gets weaker and weaker as you get farther away.
+				Another important point is that the electric field is a vector and so it has a magnitude and direction.
+				If the charge is positive, the electric field will point away from the charge.
+				if the charge is negative, the electric field will point toward the charge (see Fig. 1).
+ 			</p>
+			<figure>
+				<img
+					src="../images/efieldinout.svg"
+					alt="ectric field lines pointing away from positve charges and toward negative charges"
+				>
+				<figcaption>
+					FIG. 1. (a) Electric field vectors point away form positive charges and (b) toward negative charges.
+				</figcaption>
+			</figure>
+			<p>
+				Magnetic fields can be produced by magnetic materials.
+				but magnetic materials have a collection of microscopic currents in them that produce the magnetic fields.
+				So the most important thing to remember is that currents produced magnetic fields.
+				For example, a wire carrying a current, \(I\), will produce a magnetic field, \(B\), according to 
+			</p>
+			<p>
+				\begin{equation}B=\frac{\mu_0}{2\pi}\frac{I}{r}\tag{3}\end{equation}
+			</p>
+			<p>
+				The constant \(\mu_0\) is the permeability of free space which is \(1.25\times10^{-6}\) henries per meter (H/m).
+				The perpendicular distance from the wire to the point where you are measuring the field is \(r\).
+			</p>
+			<p>
+				The next important concept is that a changing magnetic field produces an electric field
+				and a changing electric field produces a magnetic field. Combine these two rules
+				with the fact that static charges also produce electric fields and steady currents also
+				produce magnetic fields as discussed earlier.
+				These four effects are summarized in Maxwell's equations
+				but those equations require vector calculus to denote.
+				However, these effects explain all of electrodynamics and govern all the physics of electricity, magnetism,
+				circuits, and electronics as long as quantum effects are ignored.
+				We will in fact not ignore quantum effects when we discuss transistors,
+				but first we will discuss circuits in the next section.
+			</p>
+			<div class="prev-next-container">
+				<a class="prev disabled">
+					
+				</a>
+				<a href="02-circuits.html" class="next">
+					next
+				</a>
+			</div>
+		</article>
+	</main>
+	<footer>
+		Copyright © 2021 Matthew Cooper
+	</footer>
+</body>
+</html>

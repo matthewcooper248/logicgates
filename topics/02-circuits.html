@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>circuits</title>
+	<link rel="icon" href="../favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="../style.css">
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js">
+  </script>
+  <!-- the below three lines are a fix to get HTML5 semantic elements working in old versions of Internet Explorer-->
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+	<h1>logic gates</h1>
+	<p>from first principles</p>
+	<nav>
+		<a href="../index.html">
+			home
+		</a>
+		<a href="01-electrodynamics.html">
+			start
+		</a>
+		<a href="references.html">
+			references
+		</a>
+	</nav>
+	<main>
+		<aside>
+			<a href="01-electrodynamics.html">
+				electrodynamics
+			</a>
+			<a href="02-circuits.html" class="highlighted">
+				circuits
+			</a>
+			<a href="03-solid-state-physics.html">
+				solid state physics
+			</a>
+			<a href="04-transistors.html">
+				transistors
+			</a>
+			<a href="05-logic-gates.html">
+				logic gates
+			</a>
+			<a href="references.html">
+				references
+			</a>
+		</aside>
+		<article>
+			<h2>
+				circuits
+			</h2>
+			<p>
+				All electrical phenomena are explained by Maxwell's equations,
+				but we need to introduce some quantities and concepts that will make it easier for us to translate
+				how the physics of the previous section governs the properties and dynamics of circuits.
+				First let's talk about voltage. Voltage is also known as electromotive force (emf),
+				however it is not demensionally equivalent to force.
+				But it does act analogous to a force. A voltage or emf will cause free charges to move.
+				It is the electric field that is actually producing a force, \(F\), on a free charge, \(q\), according to
+				\(F = Eq\), and the voltage is the line integral of the electric field along the path of a circuit.
+				But those equations aren't very useful for describing circuits and you should focus on the concept of voltage.
+				Confusingly, there is another term for voltage or emf and that is electric potential difference.
+			</p>
+			<h3>Ohm's law</h3>
+			<p>
+				A voltage, \(V\), across a circuit will cause free charges to move across it. Moving charges form a current, \(I\),
+				so a voltage produces a current. Free charges aren't completely free to move across a circuit.
+				The circuit will resist the free movement of charges. This property is called resistance, \(R\), and can be quantified.
+				The relationship between the voltage, current, and resistance across a circuit is given by Ohm's law
+			</p>
+			<p>
+			\begin{equation}V=IR\tag{4}\end{equation}
+			</p>
+			<p>
+				There are a couple of interesting things to note about Ohm's law.
+				Typically the resistance is a constant property of the circuit.
+				The voltage is directly proportional to the current.
+				So if you increase the voltage you apply across a circuit you will increase the current that flows through it.
+				But if you apply the same voltage to a circuit with a larger resistance you won't be able to produce as large of a current.
+				Current and resistance are inversely proportional. If you apply a voltage across a circuit with a very small resistance,
+				the current will be very large. In the ideal limit, as the resistance goes toward zero, the current will rise to infinity.
+				High currents are damaging and dangerous. If you apply a voltage across a circuit with a small resistance, it is likely
+				to heat up and eventually break. It also could injure you if you touch it.
+				Sometimes something conducting might touch a functioning circuit and bypass the sections of the circuit that have an appropriate resistance.
+				This is called a short circuit and will probably cause your circuit to break.
+			</p>
+			<p>
+				Fuses are often used to protect circuits from reaching dangerous current levels.
+				A fuse is a resistive element that is placed in a circuit and is made of a weak material by design.
+				If the current rises too high it will heat up and destroy the fuse.
+				The location of the fuse will then be a gap in the circuit and no current will be allowed to flow even though there is a voltage applied.
+				This leads us to another concept.
+				A circuit must be closed for current to flow.
+				You could say that the gap in the blown fuse actually means that the fuse now has an infinite resistance and that regardless
+				of how high the voltage is, the current must be zero according to Ohm's law.
+				But a gap in a circuit does not actually have an infinite resistance just a very high one.
+				The resistance between the moisture high up in the atmosphere and the ground is very high.
+				However, during a thunderstorm, the voltage between the clouds and the ground may increase enough
+				and the resistance of the air may go down enough that the atmosphere becomes a closed instead of an
+				open circuit and current flows from the atmosphere to the ground. Lightning strikes.
+			</p>
+			<h3>series circuits</h3>
+			<p>
+			The simplest circuit is an emf or voltage source and a resistor like so.
+			</p>
+			<figure>
+				<img
+					src="../images/simplest-circuit.svg"
+					alt="the simplest circuit with a voltage source and resistor"
+					title="the simplest circuit with a voltage source and resistor"
+				>
+				<figcaption>
+					FIG. 2. The simplest circuit with a direct current voltage source and a resistor in a loop.
+				</figcaption>
+			</figure>
+			<p>
+				This is the type of circuit that our discussion of Ohm's law could apply to.
+				But let's build a more complex circuit.
+				What if you have a circuit like this but instead there are two resistors with one after the other in the loop.
+				You would say these resistors are in <em>series</em> and it would look like Fig. 3(a).
+				What if the first resistor had a resistance of 2 ohms (\(\Omega\))
+				and the second resistor had a resistance of 3 \(\Omega\).
+				Resistors in series are equivalent to a single resistor with a resistance
+				that is the sum of the resistances of all the resistors in series.
+				So the circuit in Fig. 3(b) is equivalent to the circuit in Fig. 3(a)
+				because a 2 \(\Omega\) resistor and a 3 \(\Omega\) resistor in series
+				is equivalent to one 5 \(\Omega\) resistor.
+			</p>
+			<figure>
+				<img
+					src="../images/series-resistors.svg"
+					alt="a circuit with two resistors in series on the left and circuit with an equivalent resistor on the right"
+					title="the resistance of resistors in series add together"
+				>
+				<figcaption>
+					FIG. 3. Resistors in series. (a) Two resistors of 2 \(\Omega\) and 3 \(\Omega\) in series are equivalent to (b) one resistor of 5 \(\Omega\). 
+				</figcaption>
+			<p>
+				How is current and voltage affected when elements of a circuit are in series?
+				Well the current is unchanged. Imagine that the circuit in Fig. 3(a) has a current of 1 ampere (A) across it.
+				That would mean that the battery has a current of 1 A across it,
+				the 2 \(\Omega\) resistor has 1 A across it,
+				and the 3 \(\Omega\) resistor has 1 A across it.
+				In a circuit, all the elements that are in series will have the same current across them.
+				What about the voltage?
+				Let's continue to assume that the battery is causing the circuit to have a current of 1 A across it.
+				Let's reconsider Ohm's law in Eq. (4). We know that because the 2 \(\Omega\) and 3 \(\Omega\) resistors
+				are in series then the total equivalent resistance of the circuit is 5 \(\Omega\).
+				Then using Ohm's law we can find the voltage across the entire circuit like so
+			</p>
+			<p>
+				\begin{equation}V=IR\tag{5}\end{equation}
+				\begin{equation}V=\left( 1~\mathrm{A} \right)\left(5~\mathrm{\Omega} \right)\tag{6}\end{equation}
+				\begin{equation}V= 5~\mathrm{V} \tag{7}\end{equation}			
+			</p>
+			<p>
+				Dimensionally, one ampere ohm (\(\mathrm{A}\) \(\Omega\)) is equivalent to one volt (\(\mathrm{V}\)) which is the unit for voltage.
+				So the voltage across the entire circuit is 5 \(\mathrm{V}\).
+				What is the voltage at each point across the circuit?
+				The total voltage is 5 \(\mathrm{V}\).
+				So the voltage at the very beginning of the circuit—which is the battery—is 5 \(\mathrm{V}\).
+				Throughout the entire circuit, the current will stay the same but the voltage will drop after each resistive circuit.
+				The arrow at the top of the circuit indicates the direction of current flow.
+				Overall the current flows from the positive end of the battery to the negative end.
+			</p>
+			<p>
+				This is a good time to stop and discuss the positive and negative convention of physics and circuits.
+				We mentioned in the electrodynamics circuits that electrons are negative
+				and electrons are the fundamental charged particle that is free to flow.
+				So when there is a current, typically it is electrons or negative charges that are moving.
+				In the simple circuit depicted in Fig. 3(a), there are electrons starting at the bottom
+				side of the battery depicted by the negative sign.
+				They then move from there along the loop across the 3 \(\Omega\) resistor, then the 2 \(\Omega\) resistor,
+				then finally to the positive end of the battery.
+				The direction of flow of the negative charges in this circuit is counterclockwise.
+				However, current is defined by the flow of positive charges.
+				Strictly speaking, positive charges do not flow in the circuit.
+				They are trapped to the nucleus of the atoms they are in and only the negative charges freely flow in the counterclockwise direction.
+				But the direction of current is defined by the direction of flow of positive charges.
+				Positive charges generally don't flow but the reality is that
+				negative charges flowing in the counterclockwise direction is mathematically equivalent to positive charges flowing in the clockwise direction.
+				So the direction of current flow in Fig. 3(a) is clockwise from the positive end of the battery across the circuit to the battery's negative end.
+				When analyzing circuits always remember the current will flow from the positive end to the negative end.
+			</p>
+			<p>
+				We begin at the positive terminal of the battery on the left side of the circuit in Fig. 3(a).
+				The voltage at this point is 5 \(\mathrm{V}\).
+				We then go clockwise along the loop of the circuit until we get to the 2 \(\Omega\) resistor.
+				We are considering an idealization of a circuit where the wire between elements has no resistance.
+				The voltage hasn't changed from the positive end of the battery to the 2 \(\Omega\) resistor.
+				The voltage is  5 \(\mathrm{V}\) right before 2 \(\Omega\) resistor.
+				But the voltage will decrease across the resistor according to Ohm's law.
+				Let's calculate how much the voltage drops across this resistor.
+				This is called a voltage drop.
+			</p>
+			<p>
+				\begin{equation}\Delta V=IR\tag{8}\end{equation}
+				\begin{equation}\Delta V=\left( 1~\mathrm{A} \right)\left(2~\mathrm{\Omega} \right)\tag{9}\end{equation}
+				\begin{equation}\Delta V= 2~\mathrm{V} \tag{10}\end{equation}
+			</p>
+			<p>
+				So the voltage drops 2 \(\mathrm{V}\) across the 2 \(\Omega\) resistor from 5 \(\mathrm{V}\) to 3 \(\mathrm{V}\).
+				Now the voltage won't change as we move from the 2 \(\Omega\) resistor to the 3 \(\Omega\) resistor.
+				The voltage right before the 3 \(\Omega\) resistor is 3 \(\mathrm{V}\).
+				Let's calculate the voltage drop across the 3 \(\Omega\) resistor.
+			</p>
+			<p>
+				\begin{equation}\Delta V=IR\tag{11}\end{equation}
+				\begin{equation}\Delta V=\left( 1~\mathrm{A} \right)\left(3~\mathrm{\Omega} \right)\tag{12}\end{equation}
+				\begin{equation}\Delta V= 3~\mathrm{V} \tag{13}\end{equation}
+			</p>
+			<p>
+				So the voltage drops 3 \(\mathrm{V}\) across the 3 \(\Omega\) resistor.
+				It drops from 3 \(\mathrm{V}\) to 0 \(\mathrm{V}\).
+				The rest of the loop of the circuit from the 3 \(\Omega\) to the negative end of the battery is just ideal wire.
+				So the voltage will not change along it and the voltage will be 0 \(\mathrm{V}\) at the negative terminal of the battery.
+				This indicates that our calculations are correct.
+				First, we calculated the equivalent resistance of the circuit
+				and we used that information to determine that the voltage across the whole circuit should be 5 \(\mathrm{V}\).
+				Then we calculated the voltage across each point of the circuit accounting for drops in voltage due to resistive elements.
+				When we got back to where we started, which is the battery element, the voltage is zero.
+				This confirms are calculations are correct and is consistent with a total potential difference of 5 \(\mathrm{V}\)
+				across the whole circuit.
+				If we had some finite voltage when we got back to where we started then that would mean that either
+				the total voltage is wrong or our calculated voltage drops are wrong.
+				The battery acts differently than the resistors.
+				Rather than causing a voltage drop, the battery increases the voltage.
+				If we were to continue to traverse the circuit in the same clockwise direction,
+				the voltage would go from 0 \(\mathrm{V}\) to 5 \(\mathrm{V}\) as we cross the battery.
+				It is a 5 \(\mathrm{V}\) battery and thus increases the voltage by 5 \(\mathrm{V}\).
+			</p>
+			<h3>parallel circuits</h3>
+			<p>
+				Now let's consider a different configuration for a circuit.
+			</p>
+			<figure>
+				<img
+					src="../images/parallel-resistors.svg"
+					alt="a circuit with two resistors in parallel on the left and and an equivalent circuit on the right"
+					title="the resistance of resistors in series add together"
+				>
+				<figcaption>
+					FIG. 4. Resistors in parallel. (a) Two resistors of 2 \(\Omega\) and 3 \(\Omega\) in parallel are equivalent to (b) one resistor of 1.2 \(\Omega\). 
+				</figcaption>
+			<figure>
+			<p>
+				The 2 \(\Omega\) resistor and the 3 \(\Omega\) resistors in Fig. 4(a) are considered to be in parallel in the configuration depicted.
+				Earlier we said that circuit elements in series have the same current across them.
+				Analogously, circuit elements that are in parallel have the same voltage across them.
+				Let's again assume that the battery is a 5 \(\mathrm{V}\) battery.
+				Both the 2 \(\Omega\) and 3 \(\Omega\) resistors will have a voltage of 5 \(\mathrm{V}\) across them.
+				The voltage will drop by 5 \(\mathrm{V}\) across both of them.
+				Where the wires meet after the two parallel resistors, the voltage is zero.
+				The voltage will remain zero as you travel clockwise along the rest of the circuit till we get back to the battery where
+				the battery will increase the voltage by 5 \(\mathrm{V}\) again. 
+			</p>
+			<p>
+				The voltage across two elements in parallel is the same, but the current could be different.
+				You need to use Ohm's law to determine what the current is across each parallel element.
+				Let's calculate the current across the 2 \(\Omega\) resistor.
+			</p>
+			<p>
+				\begin{equation}V=IR\tag{14}\end{equation}
+				\begin{equation}I=\frac{V}{R}\tag{15}\end{equation}
+				\begin{equation}I=\frac{5~\mathrm{V}}{2~\mathrm{\Omega}}\tag{16}\end{equation}
+				\begin{equation}I=2.5~\mathrm{A}\tag{17}\end{equation}
+			</p>
+			<p>
+				The current across the 3 \(\mathrm{\Omega}\) resistor is
+			</p>
+			<p>
+				\begin{equation}I=\frac{V}{R}\tag{19}\end{equation}
+				\begin{equation}I=\frac{5~\mathrm{V}}{3~\mathrm{\Omega}}\tag{20}\end{equation}
+				\begin{equation}I=1.67~\mathrm{A}\tag{21}\end{equation}
+			</p>
+			<p>
+				Next, let's figure out what the equivalent resistance of the two parallel resistors is just like we did with the two series resistors.
+				With resistors in series it was pretty simple, we just added the resistances together.
+				It is a bit more complicated for resistors in parallel.
+				We need to use the following equation
+			</p>
+			<p>
+				\begin{equation}\frac{1}{R_{eq}}=\frac{1}{R_1}+\frac{1}{R_2}\tag{22}\end{equation}
+			</p>
+			<p>
+				where \(R_1\) and \(R_2\) are the resistances of two resistors in parallel.
+				\(R_{eq}\) is the equivalent resistance of the parallel resistor.
+				This equation can be extended for more resistors in parallel.
+				Just add extra terms on the right for additional parallel resistors like \(+\frac{1}{R_3}+\frac{1}{R_4}+...\) for example.
+				Let's calculate the equivalent resistance of the parallel resistors in Fig. 4(a).
+			</p>
+			<p>
+				\begin{equation}\frac{1}{R_{eq}}=\frac{1}{2~\mathrm{\Omega}}+\frac{1}{3~\mathrm{\Omega}}\tag{23}\end{equation}
+				\begin{equation}\frac{1}{R_{eq}}=\frac{5}{6~\mathrm{\Omega}}\tag{24}\end{equation}
+				\begin{equation}R_{eq}=1.2~\mathrm{\Omega}\tag{25}\end{equation}
+			</p>
+			<p>
+				So the circuit in Fig. 4(a) is equivalent to the circuit with just one resistor in Fig. 4(b).
+			</p>
+			<p>
+				We can now perform a check on our circuit analysis so far.
+				Let's calculate the current that the circuit in Fig. 4(b) must have using Ohm's law.
+			</p>
+			<p>
+				\begin{equation}I=\frac{V}{R}\tag{26}\end{equation}
+				\begin{equation}I=\frac{5~\mathrm{V}}{1.2~\mathrm{\Omega}}\tag{27}\end{equation}
+				\begin{equation}I=4.17~\mathrm{A}\tag{28}\end{equation}
+			</p>
+			<p>
+				The two circuits in Fig. 4(a) and Fig. 4(b) are equivalent.
+				The current running through the simplified circuit is 4.17 \(\mathrm{A}\).
+				In the circuit on the left with parallel elements, one elements has a current of 2.5 \(\mathrm{A}\)
+				and the other element has a curent of 1.67 \(\mathrm{A}\).
+				2.5 \(\mathrm{A}\) plus 1.67 \(\mathrm{A}\) is 4.17 \(\mathrm{A}\) which is the current across the equivalent.
+			</p>
+			<h3>
+				AC circuits
+			</h3>
+			<p>
+				All of the circuits we have discussed so far have been what are called direct current circuits.
+				The voltage that is applied is constant in time and the current that it produces in the circuit is constant in time.
+				DC circuits are actually very useful in creating computers.
+				But it is still important to discuss circuits that do not have a constant voltage and current.
+				There is a very important case of this where the current changes in time but does so periodically following a consistent pattern.
+				Imagine the current forms a sine wave if you were to plot it on the y axis and time on the x-axis.
+				We call this an alternating current (AC) circuit.
+				In a DC circuit, the current is always flowing in one direction.
+				In an AC circuit, the current is oscillating from positive to negative
+				so the direction of flow of the actual charges is constantly switching from one direction to the opposite.
+			</p>
+			<p>
+				Because the voltage and current are not constant we describe them numerically by their root mean square
+				<a 
+					href="references.html#ref-01"
+					title="[1] R. A. Serway, R. J. Beichner, and J. W. Jewett, Physics For Scientists and Engineers (Saunders College Publishing, Fort Worth, 1999)."
+				>
+				[1]</a>.
+				The form of the instantaneous voltage looks like
+			</p>
+			<p>
+				\begin{equation}V(t)=V_{max}\mathrm{sin}(\omega t)\tag{29}\end{equation}
+			</p>
+			<p>
+			To determine the root mean square, we first square the voltage.
+			</p>
+			<p>
+				\begin{equation}V^2(t)=V_{max}^2\mathrm{sin}^2(\omega t)\tag{30}\end{equation}
+			</p>
+			<p>
+				Next we take the mean or average of the voltage.
+			</p>
+			<p>
+				\begin{equation}\left&lt;V^2(t)\right&gt;_{avg}=\left&lt;V_{max}^2\mathrm{sin}^2(\omega t)\right&gt;_{avg}\tag{31}\end{equation}
+			</p>
+			<p>
+				\(V_{max}^2\) is constant, so we can pull it out of the average.
+			</p>
+			<p>
+				\begin{equation}\left&lt;V^2(t)\right&gt;_{avg}=V_{max}^2\left&lt;\mathrm{sin}^2(\omega t)\right&gt;_{avg}\tag{32}\end{equation}
+			</p>
+			<p>
+				The average of the square of a sine is always \(1/2\). So we can say
+			</p>
+			<p>
+				\begin{equation}\left&lt;V^2(t)\right&gt;_{avg}=\frac{V_{max}^2}{2}\tag{33}\end{equation}
+			</p>
+			<p>
+				Now we take the square root of what we have so far.
+			</p>
+			<p>
+				\begin{equation}\sqrt{\left&lt;V^2(t)\right&gt;_{avg}}=\sqrt{\frac{V_{max}^2}{2}}\tag{34}\end{equation}
+				\begin{equation}V_{rms}=\frac{V_{max}}{\sqrt{2}}\tag{35}\end{equation}
+			</p>
+			<p>
+				We define the square root of the mean of the square of the voltage as the root mean square (rms) voltage, \(V_{rms}\),
+				and find that it is equal to the maximum voltage divided by the square root of two.
+				This rms voltage is also a constant since \(V_{max}\) is constant.
+			</p>
+			<p>
+				Now let's consider a simple circuit with an alternating current voltage (VAC) source and a resistor or resistance, R.
+			</p>
+			<figure>
+				<img
+					src="../images/simple-ac-circuit.svg"
+					alt="a circuit with an ac voltage source on the left and resistor on the left"
+					title="a simple ac circuit"
+				>
+				<figcaption>
+					FIG. 5. A simple AC circuit with an AC voltage source on the left and resistor on the right. 
+				</figcaption>
+			<figure>
+			<p>
+				We have determined an expression for the rms voltage and now we can determine an expression for
+				the rms current in this circuit.
+				The instantaneous current across the resistor, \(I(t)\), is determined via Ohm's law
+			</p>
+			<p>
+				\begin{equation}I(t)=\frac{V(t)}{R}\tag{36}\end{equation}
+			</p>
+			<p>
+				plugging in equation 29 we get
+			</p>
+			<p>
+				\begin{equation}I(t)=\frac{V_{max}\mathrm{sin}(\omega t)}{R}\tag{37}\end{equation}
+			</p>
+			<p>
+				To determine the rms current we will follow the same procedures we used to get the rms voltage.
+				After squaring, averaging, and taking the square root, the \(\mathrm{sin}(\omega t)\), becomes a factor of \(1/\sqrt{2}\).
+				In addition \(I_{max}=V_{max}/R\) so
+			</p>
+			<p>
+				\begin{equation}I_{rms}=I_{max}/\sqrt{2}\tag{38}\end{equation}
+			</p>
+			<h3>
+				inductors
+			</h3>
+			<p>
+				We now will introduce new circuit elements that have special properties in AC circuits.
+				The first new element is an inductor.
+				Inductors are represented by a coil as depicted in Fig. 6.
+			</p>
+			<figure>
+				<img
+					src="../images/L-circuit.svg"
+					alt="a circuit with an ac voltage source and an inductor"
+					title="a circuit with an ac voltage source and an inductor"
+				>
+				<figcaption>
+					FIG. 6. a circuit with an ac voltage source and an inductor. 
+				</figcaption>
+			<figure>
+			<p>
+				Inductors typically are a coil.
+				This is also called a solenoid.
+				A loop of current produces a magnetic field.
+				The Biot-Savart law determines the magnetic field produced by a current-carrying loop
+				<a 
+					href="references.html#ref-03"
+					title="[3] D. J. Griffiths, Introduction to Electrodynamics (Prentice-Hall Inc., Upper Saddle River, 1999)."
+				>
+				[3]</a>.
+				It is an integral equation but one simple solution to it is the equation for the magnetic field at the center of a circular current loop
+			</p>
+			<p>
+				\begin{equation}B=\frac{\mu_0I}{2R}\tag{39}\end{equation}
+			</p>
+			<p>
+				where \(B\) is the magnitude of the magnetic field at the center,
+				\(\mu_0\) is the permeability of free space,
+				\(I\) is the current running through the loop,
+				and \(R\) is the radius of the loop.
+			</p>
+			<p>
+				Let's consider a coil of several loops where the radius of the loop is much larger than the thickness of the stack of coils.
+				The magnetic field will just be
+			</p>
+			<p>
+				\begin{equation}B=\frac{N\mu_0I}{2R}\tag{40}\end{equation}
+			</p>
+			<p>
+				where N is the number of loops in the coil.
+			</p>
+			<p>
+				Currents produce magnetic fields but recall from our electrodynamics discussion that a changing electric field produces a magnetic field
+				and a changing magnetic field produces an electric field.
+				If the current in our loop is alternating as in an AC circuit, then it will produce a changing magnetic field that increases and decreases.
+				This changing magnetic field will then produce an additional electric field in the coil in addition to the electric field of the current.
+				This electric field has an associated voltage that it induces in the circuit which opposes the voltage produced by the source.
+			</p>
+			<p>
+				The strength of an inductor's ability to create this opposing magnetic field can be quantified by the inductance, \(L\).
+				In general, the inductance of a coil is given by
+			</p>
+			<p>
+				\begin{equation}L=\frac{N\Phi_B}{I}\tag{41}\end{equation}
+			</p>
+			<p>
+				where \(\Phi_B\) is the magnetic flux through the coil.
+				Calculus is needed to determine the magnetic flux in general.
+				However, for simple geometries and a magnetic field, \(B\), perpendicular to the cross sectional area, \(A\), of the solenoid,
+				the magnetic flux will be equal to \(BA\).
+				Using that information and plugging Eq. 39 into Eq. 40,
+				we find that the inductance of a solenoid is given by
+			</p>
+			<p>
+				\begin{equation}L=\mu_0n^2A\ell\tag{42}\end{equation}
+			</p>
+			<p>
+				where \(n\) is the number of coils per unit length and \(\ell\) is the length of the solenoid.
+			</p>
+			<p>
+				Let's reconsider the circuit in Fig. 6.
+				Resistors have a resistance R, and inductors have an analogous property called inductive reactance, \(X_L\),
+				which is also in units of \(\Omega\).
+				The inductive reactance is not a constant though, it depends on the frequency, \(f\), of the AC voltage.
+				The angular frequency, \(\omega\), in radians is related to the frequency in hertz (\(\mathrm{Hz}\)) according to \(\omega=2\pi f\).
+				Then inductive reactance of an inductor is given by
+			</p>
+			<p>
+				\begin{equation}X_L=\omega L\tag{43}\end{equation}
+			</p>
+			<p>
+				Now we can make a relation analogous to Ohm's law for the circuit depicted in Fig. 6.
+			</p>
+			<p>
+				\begin{equation}I_{rms}=\frac{V_{rms}}{X_L}\tag{44}\end{equation}
+			</p>
+			<h3>
+				capacitors
+			</h3>
+			<p>
+				The next element we need to introduce is the capacitor as depicted by two parallel lines of equal size in Fig. 7. 
+			</p>
+			<figure>
+				<img
+					src="../images/C-circuit.svg"
+					alt="a circuit with an ac voltage source and a capacitor"
+					title="a circuit with an ac voltage source and a capacitor"
+				>
+				<figcaption>
+					FIG. 7. A circuit with an ac voltage source and a capacitor. 
+				</figcaption>
+			<figure>
+			<p>
+				When an instantaneous voltage, \(V\), is applied to a capacitor, it will build up an instantaneous charge, \(Q\), according to
+			</p>
+			<p>
+				\begin{equation}Q=CV\tag{45}\end{equation}
+			</p>
+			<p>
+				where \(C\) is the capacitance of the capacitor in units of farads, \(\mathrm{F}\).
+				Analogous to a resistor's resistance, a capacitor has a capacitive reactance given by
+			</p>
+			<p>
+				\begin{equation}X_C=\frac{1}{\omega C}\tag{46}\end{equation}
+			</p>
+			<h3>
+				RLC circuit
+			</h3>
+			<p>
+				There is a special type of AC circuit that is worth analyzing.
+				This type of circuit consists of an AC voltage source, a resistor, an inductor, and a capacitor
+				all in series as depicted in Fig. 7.
+			</p>
+			<figure>
+				<img
+					src="../images/RLC-circuit.svg"
+					alt="a circuit with an ac voltage source, a resistor, an inductor, and a capacitor in series"
+					title="a circuit with an ac voltage source, a resistor, an inductor, and a capacitor in series"
+				>
+				<figcaption>
+					FIG. 7. A circuit with an ac voltage source, a resistor, an inductor, and a capacitor in series. 
+				</figcaption>
+			</figure>
+			<p>
+				To illustrate how to analyze this circuit, let's consider an example.
+				Assume the AC voltage source is 12 \(\mathrm{V}\) at 60 \(\mathrm{Hz}\), the resistance of the resistor is 15 \(\mathrm{\Omega}\),
+				the inductance of the inductor is 50 \(\mathrm{mH}\), and the capacitance of the capacitor is 20 \(\mathrm{\mu F}\).
+				First, let's calculate the inductive reactance, \(X_L\), of the inductor using Eq. 43.
+			</p>
+			<p>
+				\begin{equation}X_L=\omega L\tag{47}\end{equation}
+				\begin{equation}\omega=2\pi f\tag{48}\end{equation}
+				\begin{equation}X_L=2\pi fL\tag{49}\end{equation}
+				\begin{equation}X_L=2\pi\left(60~\mathrm{Hz}\right)\left(50\times 10^{-3}~\mathrm{H}\right)\tag{50}\end{equation}
+				\begin{equation}X_L=18.84~\mathrm{\Omega}\tag{51}\end{equation}
+			</p>
+			<p>
+				Note that we won't be strictly maintaining significant figures throughout these calculations.
+				Next, we should calculate the capacitive reactance of the capacitor.
+			</p>
+			<p>
+				\begin{equation}X_C=\frac{1}{\omega C}\tag{52}\end{equation}
+				\begin{equation}\omega=2\pi f\tag{53}\end{equation}
+				\begin{equation}X_C=\frac{1}{2\pi fC}\tag{54}\end{equation}
+				\begin{equation}X_C=\frac{1}{2\pi\left(60~\mathrm{Hz}\right)\left(20\times 10^{-6}~\mathrm{F}\right)}\tag{55}\end{equation}
+				\begin{equation}X_C=132.63~\mathrm{\Omega}\tag{56}\end{equation}
+			</p>
+			<p>
+				Now we introduce the concept of impedance.
+				With DC circuits, we calculate the equivalent resistance of the circuit.
+				With AC circuits, we calculate the impedance of the circuit.
+				Impedance has units of \(\Omega\).
+				The impedance, \(Z\), of a series RLC circuit is given by
+			</p>
+			<p>
+				\begin{equation}Z=\sqrt{R^2+\left(X_L-X_C\right)^2}\tag{57}\end{equation}
+			</p>
+			<p>
+				Let's calculate the impedance of our example circuit.
+			</p>
+			<p>
+				\begin{equation}Z=\sqrt{\left(15~\mathrm{\Omega}\right)^2+\left(18.84~\mathrm{\Omega}-132.63~\mathrm{\Omega}\right)^2}\tag{58}\end{equation}
+			</p>
+			<p>
+				\begin{equation}Z=114.77~\mathrm{\Omega}\tag{59}\end{equation}
+			</p>
+			<p>
+				Now we can determine the rms current using the impedance and source voltage, \(V_s\), with an equation that looks similar to Ohm's law.
+			</p>
+			<p>
+				\begin{equation}I_{rms}=\frac{V_s}{Z}\tag{60}\end{equation}
+			</p>
+			<p>
+				Let's calculate the rms current of our circuit.
+			</p>
+			<p>
+				\begin{equation}I_{rms}=\frac{12~\mathrm{V}}{114.77~\mathrm{\Omega}}\tag{61}\end{equation}
+				\begin{equation}I_{rms}=0.1046~\mathrm{A}\tag{62}\end{equation}
+			</p>
+			<p>
+				Now we can use the rms current and Ohm's law to find the rms voltages across the resistor, inductor, and capacitor.
+				First, we will calculate the rms voltage across the resistor, \(V_R\).
+			</p>
+			<p>
+				\begin{equation}V_{R}=I_{rms}R\tag{63}\end{equation}
+				\begin{equation}V_R=\left(0.1046~\mathrm{A}\right)\left(15~\mathrm{\Omega}\right)\tag{64}\end{equation}
+				\begin{equation}V_R=1.569~\mathrm{V}\tag{65}\end{equation}
+			</p>
+			<p>
+				Next, we will calculate the rms voltage across the inductor, \(V_L\).
+			</p>
+			<p>
+				\begin{equation}V_L=I_{rms}X_L\tag{66}\end{equation}
+				\begin{equation}V_L=\left(0.1046~\mathrm{A}\right)\left(18.84~\mathrm{\Omega}\right)\tag{67}\end{equation}
+				\begin{equation}V_L=1.971~\mathrm{V}\tag{68}\end{equation}
+			</p>
+			<p>
+				Lastly, we calculate the rms voltage across the capacitor, \(V_C\).
+			</p>
+			<p>
+				\begin{equation}V_C=I_{rms}X_C\tag{69}\end{equation}
+				\begin{equation}V_C=\left(0.1046~\mathrm{A}\right)\left(132.63~\mathrm{\Omega}\right)\tag{0}\end{equation}
+				\begin{equation}V_C=13.87~\mathrm{V}\tag{71}\end{equation}
+			</p>
+			<p>
+				With DC circuits, if you add up the voltage from the source and subtract all the voltage drops across each element, it should sum to zero.
+				We tested this earlier with our DC series circuit.
+				This is an application of Kirchhoff's loop rule which states that the sum of the potential differences around a closed loop is always zero
+				<a 
+					href="references.html#ref-04"
+					title="[4] J. D. Jackson, Classical Electrodynamics (John Wiley and Sons, Inc., New York, 1999). "
+				>
+				[4]</a>.
+				With AC circuits, we can't simply add the voltages together.
+				We have to use the following equation.
+			</p>
+			<p>
+				\begin{equation}V_s=\sqrt{V_R^2+\left(V_L-V_C\right)^2}\tag{72}\end{equation}
+			</p>
+			<p>
+				So let's check if this holds true for our RLC circuit we have been discussing.
+			</p>
+			<p>
+				\begin{equation}V_s=\sqrt{\left(1.569~\mathrm{V}\right)^2+\left(1.569~\mathrm{V}-13.87~\mathrm{V}\right)^2}\tag{73}\end{equation}
+				\begin{equation}V_s=12.00~\mathrm{V}\tag{74}\end{equation}
+			</p>
+			<p>
+				It works out to 12 \(\mathrm{V}\) which is the original source voltage that we set for our AC circuit.
+				This confirms that our analysis was done correctly.
+				This concludes our discussion of circuits and gives us some background that is useful for all electronics not just computers.
+				However, we only scratched the surface of everything there is to know about DC and AC circuits.
+				In the next section, we will discuss some important principles of solid state physics
+				which will help us to better understand transistors which are a critical piece of technology that makes computing much easier.
+			</p>
+			<div class="prev-next-container">
+				<a href="01-electrodynamics.html" class="prev">
+					previous
+				</a>
+				<a href="03-solid-state-physics.html" class="next">
+					next
+				</a>
+			</div>
+		</article>
+	</main>
+	<footer>
+		Copyright © 2021 Matthew Cooper
+	</footer>
+</body>
+</html>

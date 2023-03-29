@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>transistors</title>
+	<link rel="icon" href="../favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="../style.css">
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js">
+  </script>
+  <!-- the below three lines are a fix to get HTML5 semantic elements working in old versions of Internet Explorer-->
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+	<h1>logic gates</h1>
+	<p>from first principles</p>
+	<nav>
+		<a href="../index.html">
+			home
+		</a>
+		<a href="01-electrodynamics.html">
+			start
+		</a>
+		<a href="references.html">
+			references
+		</a>
+	</nav>
+	<main>
+		<aside>
+			<a href="01-electrodynamics.html">
+				electrodynamics
+			</a>
+			<a href="02-circuits.html">
+				circuits
+			</a>
+			<a href="03-solid-state-physics.html">
+				solid state physics
+			</a>
+			<a href="04-transistors.html"  class="highlighted">
+				transistors
+			</a>
+			<a href="05-logic-gates.html">
+				logic gates
+			</a>
+			<a href="references.html">
+				references
+			</a>
+		</aside>
+		<article>
+			<h2>
+				transistors
+			</h2>
+			<p>
+				To understand transistors we have to consider special types of semiconductors that have been doped.
+				A doped semiconductor has some of its atoms replaced with atoms of another kind
+				which slightly alters the energy levels that are available to the electrons.
+			</p>
+			<figure>
+				<img
+					src="../images/p-type-doped.svg"
+					alt="a p-type doped semiconductor"
+					title="a p-type doped semiconductor"
+				>
+				<figcaption>
+					Fig. 11. A p-type doped semiconductor.
+				</figcaption>
+			</figure>
+			<p>
+				In Fig. 11, a semiconductor has had a small fraction of its atoms replaced with
+				atoms that provide an extra higher energy level that is slightly inside the band gap.
+				This extra energy level is small enough that some electrons can jump to these higher energy levels
+				just from thermal fluctuations.
+				The electrons leave behind empty energy levels that are not occupied by electrons.
+				These empty energy levels are called holes.
+				They act like positive charge carriers.
+				An electron in some other atom's occupied energy level could jump to this empty orbital leaving its original orbital empty.
+				The electron has moved to a different energy occupation, but you can also say
+				that the hole has moved to a different energy level.
+				These positive holes can move around the semiconductor and produce currents.
+				This type of semiconductor is called p-type because the positive holes are free to move and carry charge.
+			</p>
+			<p>
+				The other type of doped semicondutor is the n-type.
+				It is shown in Fig. 12.
+			</p>
+			<figure>
+				<img
+					src="../images/n-type-doped.svg"
+					alt="an n-type doped semiconductor"
+					title="an n-type doped semiconductor"
+				>
+				<figcaption>
+					Fig. 12. An n-type doped semiconductor.
+				</figcaption>
+			</figure>
+			<p>
+				In an n-type semiconductor, some of the atoms are replaced with different atoms that
+				add an extra energy level just below the top of the band gap.
+				These energy levels are so close to the energy levels above the band gap
+				that the electrons can easily jump to the higher energy levels due to thermal fluctuations.
+				These electrons are then free to move about above the band gap and conduct charge.
+				The freely moving electrons are negative charge carriers
+				so these type of semiconductors are referred to as n-type.
+			</p>
+			<p>
+				The usefulness of these differently doped semiconductors arises
+				when they are placed next to each other as depicted in Fig. 13 (a).
+			</p>
+			<figure>
+				<img
+					src="../images/n-type-p-type.svg"
+					alt="an n-type semiconductor next to a p-type semiconductor"
+					title="an n-type semiconductor next to a p-type semiconductor"
+				>
+				<figcaption>
+					Fig. 13. (a) An n-type semiconductor next to a p-type semiconductor and (b) an n-type next to p-type where the relative shift in energy levels is represented.
+				</figcaption>
+			</figure>
+			<p>
+				In the n-type semiconductor on the left, the electrons are free to move to the unoccupied energy levels on the right.
+				The holes are free to move from the p-type semiconductor to the n-type semiconductor.
+				The electrons above the band gap can lose energy and switch to occupying
+				the electron orbitals of holes below the band gap.
+				This will cause a positive region in the n-type semiconductor just to the left of the junction
+				and a negative region in the p-type semiconductor just to the right of the junction.
+				This creates a potential difference at the junction.
+				The potential difference is a result of a net electric field that points
+				from the positive region to the negative region.
+				An electric field produces a force on charges.
+				At the junction there is a force that opposes the movement of electrons
+				from the n-type material to the p-type material.
+				A force can also be represented by potential energy.
+				The force pushing electrons back toward the n-type material can be represented by
+				a difference in energy of the orbital electron occupations between
+				the n-type material and the p-type material as depicted in Fig. 13 (b).
+			</p>
+			<p>
+				If a DC voltage were applied to each end of this junction,
+				it could supplement or detract from this potential difference
+				affecting the ability for charge carriers to move.
+				If a positive voltage is applied to the n-type material,
+				it will increase the energy difference between the two materials
+				which will make it even harder for charge to flow.
+				If the voltage direction is reversed,
+				it will decrease the energy difference between the two materials
+				which will make it easier for charge to flow.
+				This directionality will be key to the importance of transistors
+				utilizing n-type and p-type materials.
+			</p>
+			<p>
+				We are now ready to discuss the npn junction
+				<a 
+					href="references.html#ref-06"
+					title="[6] E. Khutoryansky. Semiconductors - Physics inside Transistors and Diodes. YouTube, 8 April 2020, https://youtu.be/hrpPKCDLRN0."
+				>
+				[6]</a>.
+				as depicted in Fig. 14.
+			</p>
+			<figure>
+				<img
+					src="../images/npn-junction.svg"
+					alt="an npn junction"
+					title="an npn junction"
+				>
+				<figcaption>
+					Fig. 14. An npn junction.
+				</figcaption>
+			</figure>
+			<p>
+				If A large voltage is applied between the two n-type materials in the direction shown in Fig. 14,
+				then the energy difference between the np junction will become very large
+				and the energy difference between the pn junction will become very small.
+				Because the energy difference between the np junction is very large,
+				no current will flow across the circuit.
+				Consider, though, a smaller voltage applied between the p-type and n-type material
+				as depicted by the small DC voltage source in the right section of Fig. 14.
+				This will allow electrons to flow from the p-type end of the small DC voltage source
+				to the n-type end which will allow current to flow across the entire npn junction
+				and the entire circuit.
+				The application of a small voltage in the right side of Fig. 14
+				enabled the flow of current across the large voltage in the bottom of Fig. 14.
+				This is the key of transistors.
+				The npn junction isn't the only type of transistor
+				where a small voltage can control a larger one but it is an exemplary one.
+				In the next section, we will use these types of transistors
+				to create the logic gates which makes computing possible.
+			</p>
+			<div class="prev-next-container">
+				<a href="03-solid-state-physics.html" class="prev">
+					previous
+				</a>
+				<a href="05-logic-gates.html" class="next">
+					next
+				</a>
+			</div>
+		</article>
+	</main>
+	<footer>
+		Copyright © 2021 Matthew Cooper
+	</footer>
+</body>
+</html>

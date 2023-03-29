@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+	<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+	<title>logic gates</title>
+	<link rel="icon" href="../favicon.ico" type="image/x-icon">
+	<link rel="stylesheet" href="../style.css">
+  <script id="MathJax-script" async
+          src="https://cdn.jsdelivr.net/npm/mathjax@3.0.1/es5/tex-mml-chtml.js">
+  </script>
+  <!-- the below three lines are a fix to get HTML5 semantic elements working in old versions of Internet Explorer-->
+  <!--[if lt IE 9]>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv.js"></script>
+  <![endif]-->
+</head>
+<body>
+	<h1>logic gates</h1>
+	<p>from first principles</p>
+	<nav>
+		<a href="../index.html">
+			home
+		</a>
+		<a href="01-electrodynamics.html">
+			start
+		</a>
+		<a href="references.html">
+			references
+		</a>
+	</nav>
+	<main>
+		<aside>
+			<a href="01-electrodynamics.html">
+				electrodynamics
+			</a>
+			<a href="02-circuits.html">
+				circuits
+			</a>
+			<a href="03-solid-state-physics.html">
+				solid state physics
+			</a>
+			<a href="04-transistors.html">
+				transistors
+			</a>
+			<a href="05-logic-gates.html" class="highlighted">
+				logic gates
+			</a>
+			<a href="references.html">
+				references
+			</a>
+		</aside>
+		<article>
+			<h2>
+				logic gates
+			</h2>
+			<p>
+				The information on semiconductors that was discussed in the previous section
+				makes the transistor possible.
+				The archetypical transistor is the metal-oxide-semiconductor field-effect transistor (MOSFET).
+				The MOSFET looks like Fig. 15.
+			</p>
+			<figure>
+				<img
+					src="../images/mosfet.svg"
+					alt="a MOSFET transistor"
+					title="a MOSFET transistor"
+				>
+				<figcaption>
+					Fig. 15. A MOSFET transistor.
+				</figcaption>
+			</figure>
+			<p>
+				A MOSFET transistor is similar to the npn junction we discussed in the earlier section.
+				The most important feature is that a small voltage applied to the gate terminal, \(G\),
+				can turn on and off a larger voltage applied between the source terminal, \(S\),
+				and the drain terminal, \(D\).
+				This is the general prinicple for how a gate works.
+			</p>
+			<p>
+				We will now look at how we can represent this process symbolically
+				while ignoring the physical structure of gates.
+				The following symbol in Fig 16. represents a gate regardless of how it is physically constructed.
+			</p>
+			<figure>
+				<img
+					src="../images/gate.svg"
+					alt="a simple gate"
+					title="a simple gate"
+				>
+				<figcaption>
+					Fig. 15. A simple gate.
+				</figcaption>
+			</figure>
+			<p>
+				A small voltage applied to the base, \(B\),
+				will turn on and off a larger voltage between the emitter, \(E\) and the collector, \(C\).
+				These gates are a basic unit that can be wired together in various configurations to perform
+				different types of logical operations.
+				This is a good time to introduce the concept of a truth table.
+				\(B\) can be either on or off.
+				\(B\) is the input.
+				\(C\) is the output.
+				When a small voltage is applied to \(B\) we consider that to be a value of \(1\) in binary
+				or true in boolean logic.
+				When no voltage is applied to \(B\) we consider that to be a value of \(0\) in binary
+				or false in boolean logic.
+			</p>
+			<p>
+				What is boolean logic?
+				Boolean logic is a product of boolean algebra which was developed by George Boole in the nineteenth century				
+				<a 
+					href="references.html#ref-07"
+					title="[7] G. Boole. An Investigation of the Laws of Thought (Benediction Classics, Cork, 2017)."
+				>
+				[7]</a>.
+				In boolean logic, variables can either have a value of true or false rather than a number.
+				Instead of operations like addition and multiplication,
+				you have logical operations like and, or, and not.
+			</p>
+			<p>
+				So we have an electrical circuit that can represent logical operations.
+				The input is either on or off, \(0\) or \(1\), or true or false.
+				The input is the voltage applied to the \(B\) in Fig. 15.
+				The output is either on or off, \(0\) or \(1\), or true or false.
+				The output is the voltage that comes from \(C\) in Fig. 16.
+				We now have an input and output that are electrical signals but they can represent true or false.
+				We can summarize what happens to the output of the gate based on the input depicted in Fig. 15 in a truth table
+				like the one shown in Table 1.
+			</p>
+			<figure>
+				<img
+					src="../images/buffer-gate.svg"
+					alt="a truth table for a buffer gate"
+					title="a truth table for a buffer gate"
+				>
+				<figcaption>
+					Table 1. A truth table for a buffer gate.
+				</figcaption>
+			</figure>
+			<p>
+				A basic transistor or gate can be referred to as a buffer gate.
+				If the input is true, the output is true.
+				If the input is false, the output is false.
+				This seems simple and not particularly useful.
+				However, using this simple buffer gate we can construct more useful logical gates.
+			</p>
+			<p>
+				What if the wire that is output was attached to the emitter instead of the collector that goes to ground?
+				This is depicted in Fig. 16.
+			</p>
+			<figure>
+				<img
+					src="../images/not-gate.svg"
+					alt="a not gate"
+					title="a not gate"
+				>
+				<figcaption>
+					Fig. 16. A not gate.
+				</figcaption>
+			</figure>
+			<p>
+				If a voltage is applied to the base,
+				the emitter and collector will be connected.
+				The current will flow from the emitter to the collector bypassing the output wire.
+				A voltage placed on the input will cause no voltage to be placed on the output.
+				If no voltage is placed on the input,
+				the emitter collector will not be connected.
+				The larger voltage on the emitter will cause the current to instead flow to the output.
+				No voltage on the input will produced a voltage on the output.
+				The output is always opposite of what the input is.
+				This is a not gate and is summarized in table 2.
+			</p>
+			<figure>
+				<img
+					src="../images/not-gate-truth-table.svg"
+					alt="a truth table for a not gate"
+					title="a truth table for a not gate"
+				>
+				<figcaption>
+					Table 2. A truth table for a not gate.
+				</figcaption>
+			</figure>
+			<p>
+				The next logical operation that we want to build a circuit for is the and operation
+				<a 
+					href="references.html#ref-08"
+					title="[8] C. Anne. Boolean Logic & Logic Gates: Crash Course Computer Science #3. YouTube, 8 March 2017, https://youtu.be/gI-qXk7XojA."
+				>
+				[8]</a>.
+				Let's say that you now have two inputs, \(A\) and \(B\).
+				\(A\) and \(B\) both need to be true for the outcome to be true.
+				If both are false, the output is false.
+				If only one or the other is true, the output is still false.
+				This logical operation can be constructed using the circuit depicted in Fig. 17.
+			</p>
+			<figure>
+				<img
+					src="../images/and-gate.svg"
+					alt="an and gate"
+					title="an and gate"
+				>
+				<figcaption>
+					Fig. 17. An and gate.
+				</figcaption>
+			</figure>
+			<p>
+				Just like before, a large voltage is always applied to the emitter.
+				This time there are two base gates, \(A\) and \(B\), which are placed in series.
+				These are the inputs.
+				Current can only flow from the emitter to the collector if a small voltage is applied
+				to both the \(A\) and \(B\) inputs.
+				If neither \(A\) or \(B\) is energized then no current can flow.
+				If only one of either \(A\) or \(B\) is energized then still no current can flow.
+				This logic can be summarized in the truth table in table 3. 
+			</p>
+			<figure>
+				<img
+					src="../images/and-gate-truth-table.svg"
+					alt="a truth table for an and gate"
+					title="a truth table for an and gate"
+				>
+				<figcaption>
+					Table 3. A truth table for an and gate.
+				</figcaption>
+			</figure>
+			<p>
+				The next logical gate we want to construct is an or gate.
+				An or gate will also have two inputs, \(A\) and \(B\).
+				In this case, only one of these inputs needs to be true for the output to be true.
+				If both are true, the output will be true.
+				If neither are true, the output will be false.
+				An or gate is represented in Fig. 18.
+			</p>
+			<figure>
+				<img
+					src="../images/or-gate.svg"
+					alt="an or gate"
+					title="an or gate"
+				>
+				<figcaption>
+					Fig. 18. An or gate.
+				</figcaption>
+			</figure>
+			<p>
+				In the and gate, the inputs \(A\) and \(B\) were in series.
+				In an or gate, they are in parallel.
+				As always a large voltage is applied to the emitter.
+				We are looking to determine if an electrical current will be received at the collector which is the output.
+				In this parallel circuit, only \(A\) or \(B\) needs to be energized in order for a current to reach the output.
+				If \(A\) is energized, then the current can flow from \(E\) to \(A\) to \(C\).
+				If \(B\) is energized, then the current can flow from \(E\) to \(B\) to \(C\).
+				if neither \(A\) nor \(B\) is energized then there is no path for current to flow from \(E\) to \(C\).
+				If they are both energized, then the current can flow from either the top or bottom path to \(C\).
+				This logic is summarized in the truth table in table 4.
+			</p>
+			<figure>
+				<img
+					src="../images/or-gate-truth-table.svg"
+					alt="a truth table for an or gate"
+					title="a truth table for an or gate"
+				>
+				<figcaption>
+					Table 3. A truth table for an or gate.
+				</figcaption>
+			</figure>
+			<p>
+				This concludes our discussion of how logical operations can be created using gates or transistors.
+				This not even close to covering the depth and breadth of logical operations
+				that can be made electronically.
+				We have only covered some of the logical operations that you may be familiar with in the English language.
+				There are other logic gates that are useful and can be constructed like an xor gate.
+				I encourage you to do further research on the many types of logic gates
+				that are implemented in CPUs to make them fast and powerful.
+			</p>
+			<div class="prev-next-container">
+				<a href="04-transistors.html" class="prev">
+					previous
+				</a>
+				<a href="references.html" class="next">
+					next
+				</a>
+			</div>
+		</article>
+	</main>
+	<footer>
+		Copyright © 2021 Matthew Cooper
+	</footer>
+</body>
+</html>
